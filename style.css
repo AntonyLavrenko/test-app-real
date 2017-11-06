@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.top-container {
+    width: 600px;
+    margin: 20px auto 0;
+    display: flow-root;
+}
+
+.top-container .info {
+    width: 200px;
+    float: left;
+    display: block;
+    border: 1px solid #000;
+    padding: 2px;
+}
+
+.stage-container {
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+.ui-container {
+    width: 600px;
+    margin: 10px auto;
+    position: relative;
+}
+
+.ui-container .btn-group {
+    float: left;
+    position: relative;
+    margin-right: 20px;
+}
+
+.btn-group button {
+    display: block;
+    float: left;
+    padding: 2px 7px;
+    color: #0000cc;
+    font-size: 24px;
+    font-weight: bold;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.btn-group h5 {
+    display: flow-root;
+}
+
+.btn-group button:nth-child(2) {
+    border-radius: 10px 0 0 10px;
+    padding: 2px 9px;
+}
+
+.btn-group button:nth-child(3) {
+    border-radius: 0 10px 10px 0;
+    border-left: none;
+}
+
+.btn-group label {
+    width: 40px;
+    padding: 8px 7px;
+    display: block;
+    float: left;
+    text-align: center;
+    border: 1px solid #000;
+    margin-left: 5px;
+}

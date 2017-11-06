@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App-Real test</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./object.observe.polyfill.js"></script>
+    <script type="text/javascript" src="./pixi.min.js"></script>
+
+    <script type="text/javascript" src="./symbols/symbolInterface.js"></script>
+    <script type="text/javascript" src="./symbols/symbolElips.js"></script>
+    <script type="text/javascript" src="./symbols/symbolCircle.js"></script>
+    <script type="text/javascript" src="./symbols/symbolTriangle.js"></script>
+    <script type="text/javascript" src="./symbols/symbolRectangle.js"></script>
+    <script type="text/javascript" src="./symbols/symbolPolygone5.js"></script>
+    <script type="text/javascript" src="./symbols/symbolPolygone6.js"></script>
+
+    <script type="text/javascript" src="./model.js"></script>
+    <script type="text/javascript" src="./stageManager.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+<div class="top-container">
+    <div class="info">
+        <h5>Number of current shapes:</h5>
+        <label id="countSymbols"></label>
+    </div>
+    <div class="info">
+        <h5>Surface area occupied by shapes:</h5>
+        <label id="surfaceArea"></label>
+    </div>
+</div>
+<div class="stage-container" id="stageCanvas"></div>
+<div class="ui-container">
+    <div class="btn-group">
+        <h5>Number of shapes per sec</h5>
+        <button onclick="if(model.symbols > 0) model.symbols--">-</button>
+        <button onclick="model.symbols++">+</button>
+        <label id="symbols"></label>
+    </div>
+    <div class="btn-group">
+        <h5>Gravity value</h5>
+        <button onclick="if(model.gravity > 0) model.gravity--">-</button>
+        <button onclick="model.gravity++">+</button>
+        <label id="gravity"></label>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var model = new Model();
+    model.on("symbols", function (value) {
+        document.getElementById("symbols").innerText = value;
+    });
+
+    model.on("gravity", function (value) {
+        document.getElementById("gravity").innerText = value;
+    });
+
+    model.on("countSymbols", function (value) {
+        document.getElementById("countSymbols").innerText = value;
+    });
+
+    model.on("surfaceArea", function (value) {
+        document.getElementById("surfaceArea").innerText = Number(value).toFixed(2) + "px";
+    });
+
+    model.symbols = 2;
+    model.gravity = 2;
+    model.countSymbols = 0;
+    model.surfaceArea = 0;
+
+    var stage = new StageManager("stageCanvas", 600, 400);
+    stage.initStage();
+    stage.initTicker();
+
+    var main = new Main(model, stage);
+    main.initSymbols();
+
+</script>
+</body>
+</html>
